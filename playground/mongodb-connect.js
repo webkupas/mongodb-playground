@@ -26,8 +26,13 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
   //   console.log(JSON.stringify(result.ops, undefined, 2))
   // })
 
-  db.collection('Users').find({location: 'Ukraine'}).toArray().then(doc => {
-    console.log(JSON.stringify(doc, undefined, 2))
+  // db.collection('Users').find({location: 'Ukraine'}).toArray().then(doc => {
+  //   console.log(JSON.stringify(doc, undefined, 2))
+  // })
+
+  db.collection('Users').deleteMany({name: 'Pavel1'}).then(res => {
+    console.log(res)    
   })
-  client.close()
+
+  //client.close()
 })
