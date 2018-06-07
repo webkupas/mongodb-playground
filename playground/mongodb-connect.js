@@ -1,38 +1,35 @@
-//const MongoClient = require('mongodb').MongoClient
-const {MongoClient, ObjectID} = require('mongodb')
+// const MongoClient = require('mongodb').MongoClient;
+const {MongoClient, ObjectID} = require('mongodb');
 
-var obj = new ObjectID()
-
-MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
-  if (err) return console.error('Unable to connect to MongoDB Server')
-  console.log('Connected to MongoDB Server')
-  const db = client.db('TodoApp')
+MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
+  if (err) {
+    return console.log('Unable to connect to MongoDB server');
+  }
+  console.log('Connected to MongoDB server');
 
   // db.collection('Todos').insertOne({
-  //   text: 'Hello there!',
+  //   text: 'Something to do',
   //   completed: false
   // }, (err, result) => {
-  //   if (err) return console.log('Unable to insert todo item:', err)
-  //   console.log(JSON.stringify(result.ops, undefined, 2))   
-  // })
+  //   if (err) {
+  //     return console.log('Unable to insert todo', err);
+  //   }
+  //
+  //   console.log(JSON.stringify(result.ops, undefined, 2));
+  // });
 
+  // Insert new doc into Users (name, age, location)
   // db.collection('Users').insertOne({
-  //   name: 'Nicky',
-  //   location: 'Ukraine',
-  //   age: 3
+  //   name: 'Andrew',
+  //   age: 25,
+  //   location: 'Philadelphia'
   // }, (err, result) => {
-  //   if (err) return console.error('Unable to add new user in DB:', err)
-  //   console.log('New user successfully added!')
-  //   console.log(JSON.stringify(result.ops, undefined, 2))
-  // })
+  //   if (err) {
+  //     return console.log('Unable to insert user', err);
+  //   }
+  //
+  //   console.log(result.ops[0]._id.getTimestamp());
+  // });
 
-  // db.collection('Users').find({location: 'Ukraine'}).toArray().then(doc => {
-  //   console.log(JSON.stringify(doc, undefined, 2))
-  // })
-
-  db.collection('Users').deleteMany({name: 'Pavel1'}).then(res => {
-    console.log(res)    
-  })
-
-  //client.close()
-})
+  db.close();
+});
